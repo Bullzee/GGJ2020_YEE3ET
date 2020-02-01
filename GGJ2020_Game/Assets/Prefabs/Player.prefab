@@ -4828,6 +4828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+  minAngle: 0
   maxAngle: 0
 --- !u!1 &8703625585267152680
 GameObject:
@@ -4893,7 +4894,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 48970d0ccd1d3994cb9efc9063f5c3be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4990,6 +4991,7 @@ GameObject:
   - component: {fileID: 8703625586211317789}
   - component: {fileID: 8703625586211317788}
   - component: {fileID: 7030464241682644838}
+  - component: {fileID: 813160693}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -5005,7 +5007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8703625586211317787}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36842692, z: -2.896}
+  m_LocalPosition: {x: 0, y: 0.5, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8703625584833177387}
@@ -5078,3 +5080,20 @@ MonoBehaviour:
   repairPrompt: {fileID: 0}
   damageBar: {fileID: 0}
   healthBar: {fileID: 0}
+--- !u!114 &813160693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8703625586211317787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26ab9dea64ca6c943b8e76220c8acb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalPosition: {x: 0, y: 0, z: 0}
+  rayDistance: 3
+  groundOffset: 0.5
+  transistionTime: 2
+  rayTransform: {fileID: 8703625584833177387}
