@@ -19,18 +19,21 @@ public class Repairable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void repairDamage(float amount)
     {
-        currentDamage -= amount;
-
-        if(currentDamage <= 0)
+        if (currentDamage > 0)
         {
-            currentDamage = 0;
+            currentDamage -= amount;
 
-            // TODO: notify listeners that this repairable is fully repaired
+            if (currentDamage <= 0)
+            {
+                currentDamage = 0;
+
+                GameController.instance.repairFinished();
+            }
         }
     }
 
