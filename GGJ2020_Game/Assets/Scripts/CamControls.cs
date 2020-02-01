@@ -6,11 +6,12 @@ public class CamControls : MonoBehaviour
 {
     Vector3 rotation;
     [SerializeField]
-    float rotationSpeed, maxAngle;
+    float rotationSpeed, minAngle, maxAngle;
     // Start is called before the first frame update
     void Start()
     {
         rotationSpeed = 1f;
+        minAngle = -40f;
         maxAngle = 80f;
     }
 
@@ -23,7 +24,7 @@ public class CamControls : MonoBehaviour
     public void lookAround()
     {
         rotation += new Vector3(-Input.GetAxis("Mouse Y"), 0, 0) * rotationSpeed;
-        rotation.x = Mathf.Clamp(rotation.x, -maxAngle, maxAngle);
+        rotation.x = Mathf.Clamp(rotation.x, minAngle, maxAngle);
         transform.localRotation = Quaternion.Euler(rotation);
     }
 }

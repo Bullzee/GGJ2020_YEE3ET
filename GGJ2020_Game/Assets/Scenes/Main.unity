@@ -120,12 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &613492119 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 613492119, guid: c9ce1760e35fa014283f50c31028518f,
-    type: 3}
-  m_PrefabInstance: {fileID: 724587753873502931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &640381297
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 2134170213561060698, guid: 01f6289f6a683b14493f016a4595799e,
         type: 3}
       propertyPath: m_Name
-      value: Console
+      value: Repairable
       objectReference: {fileID: 0}
     - target: {fileID: 2134170213561060702, guid: 01f6289f6a683b14493f016a4595799e,
         type: 3}
@@ -787,11 +781,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8636236248379444503, guid: 8d660eddbead4f24b959bd0a391d57f3,
-        type: 3}
-      propertyPath: throughPoint
-      value: 
-      objectReference: {fileID: 613492119}
     - target: {fileID: 8636236248379444503, guid: 8d660eddbead4f24b959bd0a391d57f3,
         type: 3}
       propertyPath: repairPrompt
