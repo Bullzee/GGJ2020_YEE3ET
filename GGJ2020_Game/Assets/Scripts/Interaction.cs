@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
-    public Transform throughPoint;
     public GameObject repairPrompt;
     public GameObject damageBar;
     public Transform healthBar;
+
+    private Dictionary<Outline, bool> outlinesDict = new Dictionary<Outline, bool>();
+    private List<Outline> outlines = new List<Outline>();
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +21,13 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        foreach (Outline o in outlines)
+        {
+            outlinesDict[o] = false;
+        }
+
         RaycastHit hit;
-        Ray ray = new Ray(transform.position, throughPoint.position - transform.position);
-        //Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width * 0.5f, Screen.height * 0.5f));
         int layerMask = ~(1 << 8);
 
         repairPrompt.SetActive(false);
@@ -37,6 +43,13 @@ public class Interaction : MonoBehaviour
                 {
                     repairPrompt.SetActive(true);
 
+                    Outline o = hit.transform.GetComponent<Outline>();
+                    if (!outlines.Contains(o))
+                    {
+                        outlines.Add(o);
+                    }
+                    outlinesDict[o] = true;
+
                     if (Input.GetKey(KeyCode.E))
                     {
                         r.repairDamage(Time.deltaTime);
@@ -45,6 +58,11 @@ public class Interaction : MonoBehaviour
                     }
                 }
             }
+        }
+
+        foreach (Outline o in outlines)
+        {
+            o.enabled = outlinesDict[o];
         }
     }
 }
