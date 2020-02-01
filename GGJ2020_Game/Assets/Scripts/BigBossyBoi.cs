@@ -9,13 +9,13 @@ public delegate void OnExitSate();
 public delegate bool ExitConditions();*/
 public class BigBossyBoi : MonoBehaviour
 {
-    public float StuckTime = 30.0f;
+    public float StuckTime = 15.0f;
     public float SpinTime = 1.0f;
     public float CoolDownTime = 1.5f;
     public float angleThreshold = 5.0f;
     public float fastTurnThreshold = 120.0f;
-    public float turnSpeed = 15.0f;
-    public float quickTurnSpeed = 30.0f;
+    public float turnSpeed = 35.0f;
+    public float quickTurnSpeed =90.0f;
     public Transform lockOnTarget;
     bool _playerOn = false;
     bool _hitPlayer = false;
@@ -95,6 +95,7 @@ public class BigBossyBoi : MonoBehaviour
 
     void TargetLogic()
     {
+        Debug.Log("Targeting");
         if (LockOnPlayer())
         {
             state = BossState.Attacking;
@@ -103,24 +104,48 @@ public class BigBossyBoi : MonoBehaviour
     bool LockOnPlayer()
     {
         Vector3 robotToPlayer = new Vector3(lockOnTarget.position.x-transform.position.x,0, lockOnTarget.position.z - transform.position.z);
+        Debug.DrawRay(transform.position,robotToPlayer,Color.red);
+        Debug.DrawRay(transform.position, transform.forward*10.0f, Color.red);
+        
         float angleBetween = Vector3.Angle(transform.forward, robotToPlayer);
+        Vector3 newDirection;
+        Debug.Log(angleBetween);
         if (angleBetween < angleThreshold)
         {
             return true;
         }
         if (angleBetween > fastTurnThreshold)
         {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, angleBetween, 0), quickTurnSpeed * Time.deltaTime);
+
+            Debug.Log("GottaGOFast");
+            /*    Vector3 newDir = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, angleBetween, 0), quickTurnSpeed * Time.deltaTime);
+                 Quaternion.RotateTowards();*/
+             newDirection = Vector3.RotateTowards(transform.forward, robotToPlayer, Mathf.Deg2Rad*quickTurnSpeed*Time.deltaTime, 0.0f);
+
+            // Draw a ray pointing at our target in
+         //   Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.LookRotation(newDirection);
             return false;
         }
-            
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,angleBetween,0), turnSpeed * Time.deltaTime);
-            return false;
+        Debug.Log("SlowTurn");
+
+        //  transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0,angleBetween,0), turnSpeed * Time.deltaTime);
+         newDirection = Vector3.RotateTowards(transform.forward, robotToPlayer, Mathf.Deg2Rad * turnSpeed * Time.deltaTime, 0.0f);
+
+        // Draw a ray pointing at our target in
+        //   Debug.DrawRay(transform.position, newDirection, Color.red);
+
+        // Calculate a rotation a step closer to the target and applies rotation to this object
+        transform.rotation = Quaternion.LookRotation(newDirection);
+        return false;
         
        
     }
     void LockedOnLogic()
     {
+        Debug.Log("Locked");
         /*
          Start animation
          */
@@ -130,6 +155,7 @@ public class BigBossyBoi : MonoBehaviour
     }
     void AttackingLogic()
     {
+        Debug.Log("Attacking");
         if (_finishedAttack)
         {
             if (_hitPlayer)
@@ -143,11 +169,11 @@ public class BigBossyBoi : MonoBehaviour
             }
 
         }
-
+        state = BossState.Stuck;
     }
     void StuckLogic()
     {
-        
+        Debug.Log("Help I have fallen and I can't get up");
         if (_timer < StuckTime)
         {
             _timer += Time.deltaTime;
@@ -161,7 +187,7 @@ public class BigBossyBoi : MonoBehaviour
     }
     void ShakeLogic()
     {
-
+        Debug.Log("Get of you filthy heathen!");
         PlayUprightAnimation();
         if (_timer < SpinTime)
         {
@@ -176,6 +202,7 @@ public class BigBossyBoi : MonoBehaviour
 
     void CoolDownLogic()
     {
+        Debug.Log("Cooling Down");
         if (_timer < CoolDownTime)
         {
             _timer += Time.deltaTime;

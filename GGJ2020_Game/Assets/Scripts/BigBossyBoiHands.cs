@@ -15,4 +15,11 @@ public class BigBossyBoiHands : MonoBehaviour
     {
         
     }
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Player")
+        {
+            GetComponentInParent<BigBossyBoi>().HitSomething();
+        }
+    }
 }

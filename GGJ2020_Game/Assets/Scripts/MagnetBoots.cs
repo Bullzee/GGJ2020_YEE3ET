@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class MagnetBoots : MonoBehaviour
 {
+    [SerializeField]
+    public string RobotMask;
     Vector3 playerNormal, groundNormal, playerForward;
     Quaternion gravRotation;
     [SerializeField]
     float worldGravity = 9.8f, rotationSpeed = 1f, groundOffset = 2f;
-    int layerMask = ~(1 << 8);
+    [SerializeField]
+    int layerMask;
 
     Rigidbody playerRigidbody;
     Ray playerRay;
@@ -18,9 +21,12 @@ public class MagnetBoots : MonoBehaviour
     Vector3 rotation;
 
     public PlayerMovement player;
+
+    public GameObject sparkParticles;
     // Start is called before the first frame update
     void Start()
     {
+        layerMask = LayerMask.GetMask(RobotMask);
         groundNormal = Vector3.up;
         playerNormal = transform.up;
         playerRigidbody = GetComponentInChildren<Rigidbody>();
@@ -38,11 +44,13 @@ public class MagnetBoots : MonoBehaviour
         {
             groundNormal = groundPoint.normal;
             playerNormal = groundNormal;
+            sparkParticles.SetActive(true);
         }
         else
         {
             groundNormal = Vector3.up;
             playerNormal = groundNormal;
+            sparkParticles.SetActive(false);
         }
 
         Debug.DrawRay(transform.position, playerNormal);
