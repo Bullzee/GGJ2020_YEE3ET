@@ -17,6 +17,7 @@ public class BigBossyBoi : MonoBehaviour
     public float turnSpeed = 35.0f;
     public float quickTurnSpeed =90.0f;
     public Transform lockOnTarget;
+    public float spinSpeed = 720.0f;
     bool _playerOn = false;
     bool _hitPlayer = false;
     bool _finishedAttack = false;
@@ -61,7 +62,7 @@ public class BigBossyBoi : MonoBehaviour
             exitState();
             state = BossState.Shaking;
         }
-        
+        _playerOn = false;
     }
     void exitState()
     {
@@ -181,14 +182,17 @@ public class BigBossyBoi : MonoBehaviour
         if (_timer>=StuckTime)
         {
             _timer = 0;
-            state = BossState.Shaking;
+            if (_playerOn) {
+                state = BossState.Shaking;
+            }
+            PlayUprightAnimation();
         }
 
     }
     void ShakeLogic()
     {
         Debug.Log("Get of you filthy heathen!");
-        PlayUprightAnimation();
+       
         if (_timer < SpinTime)
         {
             _timer += Time.deltaTime;
@@ -196,7 +200,8 @@ public class BigBossyBoi : MonoBehaviour
         if (_timer >= SpinTime)
         {
             _timer = 0;
-            state = BossState.CoolingDown;
+          
+            state = BossState.CoolingDown; 
         }
     }
 
