@@ -103,7 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   lockCamera: 0
-  rightOffset: 0
+  rightOffset: 0.2
   defaultDistance: 2.5
   height: 1.4
   smoothFollow: 10
@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b665a7defd78d4a80c15f2e1b9677a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throughPoint: {fileID: 0}
   repairPrompt: {fileID: 0}
   damageBar: {fileID: 0}
   healthBar: {fileID: 0}
