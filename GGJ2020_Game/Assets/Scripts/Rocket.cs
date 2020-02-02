@@ -108,7 +108,11 @@ public class Rocket : MonoBehaviour
     }
     void OnCollisionEnter(Collision col)
     {
-    
+    if(col.gameObject.tag == "Player")
+        {
+            Debug.Log("here");
+            col.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * 10.0f, ForceMode.VelocityChange);
+        }
 
         Destroy(gameObject);
     }
