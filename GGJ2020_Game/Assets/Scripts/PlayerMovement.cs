@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void KnockBack()
+    public void KnockBack()
     {
         damageParticles.Play();
         playerRigidbody.AddForce(-transform.forward * jumpForce, ForceMode.VelocityChange);
