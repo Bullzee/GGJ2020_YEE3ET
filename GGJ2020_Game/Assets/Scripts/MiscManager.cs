@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class MiscManager : MonoBehaviour
 {
     //stuff for the timer
     public Slider timerSlider;
@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
     //the slider for the health
     public Slider healthTimer;
     public Image fill;
+
+    //the city 
+    public GameObject city;
+    public Vector3 cityPosition;
+    int cityLimit = 490;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +27,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer(0.2f * Time.deltaTime);
-        UpdateHealth(0.2f * Time.deltaTime);
+        UpdateTimer(0.1f * Time.deltaTime);
+        UpdateHealth(0.1f * Time.deltaTime);
+        MoveCity();
     }
 
     public void UpdateTimer(float amount)
@@ -37,5 +43,14 @@ public class UIManager : MonoBehaviour
     {
         healthTimer.value += amount;
         fill.color = Color.Lerp(Color.red, Color.green, healthTimer.value / 1);
+    }
+
+    void MoveCity()
+    {
+        if (cityPosition.x < cityLimit)
+        {
+            cityPosition.x += (10*Time.deltaTime);
+            city.transform.position = new Vector3(cityPosition.x, cityPosition.y, cityPosition.z);
+        }
     }
 }
