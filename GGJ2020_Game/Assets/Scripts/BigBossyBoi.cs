@@ -18,6 +18,8 @@ public class BigBossyBoi : MonoBehaviour
     public float quickTurnSpeed =90.0f;
     public Transform lockOnTarget;
     public float spinSpeed = 720.0f;
+    public int stuckOnAttackX = 3;
+    int attackCounter = 0;
     bool _playerOn = false;
     bool _hitPlayer = false;
     bool _finishedAttack = false;
@@ -159,18 +161,27 @@ public class BigBossyBoi : MonoBehaviour
         Debug.Log("Attacking");
         if (_finishedAttack)
         {
-            if (_hitPlayer)
+            
+            attackCounter++;
+           
+               
+               
+            if(attackCounter>=stuckOnAttackX&&!_hitPlayer)
             {
-                PlayUprightAnimation();
-                state = BossState.CoolingDown;
+              
+                    state = BossState.Stuck;
+                    attackCounter = 0;
+                
+               
             }
             else
             {
-                state = BossState.Stuck;
+            state = BossState.CoolingDown;
+                PlayUprightAnimation();
             }
 
         }
-        state = BossState.Stuck;
+      //  state = BossState.Stuck;
     }
     void StuckLogic()
     {
