@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public MiscManager theMiscManager;
 
     private int repairsFinished = 0;
+    int NUM_REPAIRS = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +32,11 @@ public class GameController : MonoBehaviour
     public void repairFinished()
     {
         repairsFinished++;
-
+        theMiscManager.UpdateHealth(0.2f);
         //TODO: 
-        //if (repairsFinished >= NUM_REPAIRS)
-            // end the game in success
+        if (repairsFinished >= NUM_REPAIRS)
+        {
+            print("LOLBISH");
+        }
     }
 }

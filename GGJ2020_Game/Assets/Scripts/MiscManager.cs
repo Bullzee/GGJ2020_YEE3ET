@@ -28,7 +28,6 @@ public class MiscManager : MonoBehaviour
     void Update()
     {
         UpdateTimer(0.01f * Time.deltaTime);
-        UpdateHealth(0.01f * Time.deltaTime);
         MoveCity();
     }
 

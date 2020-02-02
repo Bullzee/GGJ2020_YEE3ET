@@ -126,7 +126,7 @@ public class BigBossyBoi : MonoBehaviour
         
         float angleBetween = Vector3.Angle(transform.forward, robotToPlayer);
         Vector3 newDirection;
-        Debug.Log(angleBetween);
+        //Debug.Log(angleBetween);
         if (angleBetween < angleThreshold)
         {
             return true;
