@@ -96,5 +96,13 @@ public class Rocket : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
     }
+    void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Player")
+        {
+          //  col.gameObject.GetComponent<PlayerKnockback>().KnockPlayer();
+        }
+        Destroy(gameObject);
+    }
 
 }
