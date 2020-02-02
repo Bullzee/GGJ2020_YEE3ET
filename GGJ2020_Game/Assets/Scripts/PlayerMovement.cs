@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    float movementSpeed = 5f, jumpForce = 1f, jumpOffset = 1.5f;
+    float movementSpeed = 5f, jumpForce = 1f, jumpOffset = 1.5f, knockBackForce = 5f;
 
     Rigidbody playerRigidbody;
     RaycastHit groundRaycast;
@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
     MagnetBoots magnet;
 
     //for the sounds
-    public SoundManager theSoundManager; 
+    public SoundManager theSoundManager;
+
+    //for the particles
+    public ParticleSystem damageParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KnockBack"))
+        {
+            print("HELLO??");
+            KnockBack();
+        }
+    }
+
+    void KnockBack()
+    {
+        damageParticles.Play();
+        playerRigidbody.AddForce(-transform.forward * jumpForce, ForceMode.VelocityChange);
+
+    }
 
 
 }
