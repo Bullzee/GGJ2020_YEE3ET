@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 168692295215594700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: -0.61, z: -10.7}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 7, y: 7, z: -7}
   m_Children:
   - {fileID: 622063826776180049}
   - {fileID: 183218053143734503}
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad35f9b4810785f4795ed463084aaa95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StuckTime: 30
+  StuckTime: 3
   SpinTime: 1
   CoolDownTime: 1.5
   angleThreshold: 5
@@ -202,6 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739672675591072990}
   - component: {fileID: 714030565}
+  - component: {fileID: 2017739477439459191}
   m_Layer: 9
   m_Name: L2
   m_TagString: Untagged
@@ -226,6 +227,20 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &714030565
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537861743773522359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0033489333
+  m_Height: 0.010726973
+  m_Direction: 2
+  m_Center: {x: 0.0006451303, y: 0.010510101, z: -0.00067138986}
+--- !u!136 &2017739477439459191
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6756247293616171591}
   - component: {fileID: 2139243998}
+  - component: {fileID: 7117279748945697642}
   m_Layer: 9
   m_Name: R2
   m_TagString: Untagged
@@ -347,6 +363,20 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2139243998
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957961790762164029}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0037745708
+  m_Height: 0.010963971
+  m_Direction: 2
+  m_Center: {x: -0.00044517976, y: 0.009955127, z: -0.00078988675}
+--- !u!136 &7117279748945697642
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,6 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5038920558343517934}
   - component: {fileID: 123397935}
+  - component: {fileID: 956370513828366252}
   m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
@@ -543,6 +574,20 @@ CapsuleCollider:
   m_Height: 0.00726521
   m_Direction: 0
   m_Center: {x: -0.00091875315, y: 0.00057516416, z: 0.01098835}
+--- !u!136 &956370513828366252
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096155748369223465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0032024789
+  m_Height: 0.00726521
+  m_Direction: 0
+  m_Center: {x: -0.00091875315, y: 0.00057516416, z: 0.01098835}
 --- !u!1 &8123709737276697177
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +613,7 @@ Transform:
   m_GameObject: {fileID: 8123709737276697177}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 2.3222818, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 100, y: -100, z: 100}
   m_Children:
   - {fileID: 5038920558343517934}
   m_Father: {fileID: 3750382928807153375}
@@ -1003,13 +1048,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990940395201899184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.047537733, y: 2.9142811, z: 0.047537737}
+  m_LocalRotation: {x: 0, y: 0.99970996, z: -0, w: -0.024082966}
+  m_LocalPosition: {x: -0.047537733, y: 2.9142811, z: -0.04753774}
   m_LocalScale: {x: 85.43461, y: 85.43461, z: 85.43461}
   m_Children: []
   m_Father: {fileID: 3750382928807153375}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 182.76, z: 0}
 --- !u!137 &6441435679287714065
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0

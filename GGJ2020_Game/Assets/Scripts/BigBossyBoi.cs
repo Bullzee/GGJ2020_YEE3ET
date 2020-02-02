@@ -195,9 +195,12 @@ public class BigBossyBoi : MonoBehaviour
         if (_timer>=StuckTime)
         {
             _timer = 0;
-            if (_playerOn) {
+            if (_playerOn)
+            {
                 state = BossState.Shaking;
             }
+            else
+                state = BossState.CoolingDown;
             PlayUprightAnimation();
         }
 
