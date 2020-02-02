@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    float movementSpeed = 5f, jumpForce = 1f, jumpOffset = 1.5f;
+    float movementSpeed = 5f, jumpForce = 1f, jumpOffset = 1.5f, knockBackForce = 5f;
 
     Rigidbody playerRigidbody;
     RaycastHit groundRaycast;
@@ -44,6 +44,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("KnockBack"))
+        {
+            KnockBack();
+        }
+    }
+
+    void KnockBack()
+    {
+        playerRigidbody.AddForce(-transform.forward * jumpForce, ForceMode.VelocityChange);
+
+    }
 
 
 }
