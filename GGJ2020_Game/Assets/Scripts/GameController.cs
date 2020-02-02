@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public MiscManager theMiscManager;
+    public BigBossyBoi boss;
 
     private int repairsFinished = 0;
     int NUM_REPAIRS = 5;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
     {
         repairsFinished++;
         theMiscManager.UpdateHealth(0.2f);
+        boss.FreeBossyBoi();
         //TODO: 
         if (repairsFinished >= NUM_REPAIRS)
         {

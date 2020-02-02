@@ -231,6 +231,8 @@ public class BigBossyBoi : MonoBehaviour
           
             state = BossState.CoolingDown; 
         }
+        transform.Rotate(new Vector3(0 ,720.0f*Time.deltaTime ,0));
+
     }
 
     void CoolDownLogic()
@@ -261,6 +263,23 @@ public class BigBossyBoi : MonoBehaviour
         //play animation to stand up
         animationController.setToIdle();
     }
+    public void FreeBossyBoi()
+    {
+        if (state == BossState.Stuck)
+        {
+            PlayUprightAnimation();
+            state = BossState.CoolingDown;
+            _timer = 0;
+        }
+
+    }
+    /*void OnCollisionEnter(Collision col)
+    {
+      if (col.gameObject.tag == "Player")
+        {
+            _playerOn = true;
+        }
+    }*/
 }
 /*public class BossStateMachine:ScriptableObject
 {
