@@ -30,7 +30,7 @@ public class MiscManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer(0.01f * Time.deltaTime);
+        UpdateTimer(0.001f * Time.deltaTime);
         MoveCity();
     }
 
@@ -57,7 +57,7 @@ public class MiscManager : MonoBehaviour
     {
         if (cityPosition.x < cityLimit)
         {
-            cityPosition.x += (10*Time.deltaTime);
+            cityPosition.x += (4*Time.deltaTime);
             city.transform.position = new Vector3(cityPosition.x, cityPosition.y, cityPosition.z);
         }
     }
