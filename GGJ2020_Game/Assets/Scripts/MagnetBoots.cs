@@ -10,25 +10,28 @@ public class MagnetBoots : MonoBehaviour
     Vector3 playerNormal, groundNormal, playerForward;
     Quaternion gravRotation;
     [SerializeField]
-    float worldGravity = 9.8f, rotationSpeed = 1f, groundOffset = 2f;
+    float worldGravity = 9.8f, rotationSpeed = 1f, forwardOffset = 2f, groundOffset = 2f, rotationTime = 7f, height = 0.5f;
     [SerializeField]
     int layerMask;
 
     Rigidbody playerRigidbody;
-    Ray playerRay;
+    Ray playerRay, playerForwardRay;
     RaycastHit groundPoint;
 
     Vector3 rotation;
+    Vector3 highTransform;
 
     public PlayerMovement player;
 
     public GameObject sparkParticles;
+
     // Start is called before the first frame update
     void Start()
     {
         layerMask = LayerMask.GetMask(RobotMask);
         groundNormal = Vector3.up;
         playerNormal = transform.up;
+        //highTransform = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
         playerRigidbody = GetComponentInChildren<Rigidbody>();
     }
 
@@ -36,29 +39,60 @@ public class MagnetBoots : MonoBehaviour
     {
         playerRigidbody.AddForce(-worldGravity * playerRigidbody.mass * playerNormal);
     }
+
     // Update is called once per frame
     void Update()
     {
+        highTransform = new Vector3(transform.position.x, transform.position.y + height, transform.position.z);
         playerRay = new Ray(transform.position, -transform.up);
-        if (Physics.Raycast(playerRay, out groundPoint, groundOffset, layerMask))
+        playerForwardRay = new Ray(transform.position, transform.forward);
+
+        switch (Physics.Raycast(playerForwardRay, out groundPoint, forwardOffset, layerMask))
         {
-            groundNormal = groundPoint.normal;
-            playerNormal = groundNormal;
-            sparkParticles.SetActive(true);
-        }
-        else
-        {
-            groundNormal = Vector3.up;
-            playerNormal = groundNormal;
-            sparkParticles.SetActive(false);
+            case true:
+                groundNormal = groundPoint.normal;
+                sparkParticles.SetActive(true);
+                break;
+            case false:
+                if (Physics.Raycast(playerRay, out groundPoint, groundOffset, layerMask))
+                {
+                    groundNormal = groundPoint.normal;
+                    //playerNormal = groundNormal;
+                    sparkParticles.SetActive(true);
+                }
+                else
+                {
+                    groundNormal = Vector3.up;
+                    sparkParticles.SetActive(false);
+                }
+                break;   
         }
 
+        //if (Physics.Raycast(playerRay, out groundPoint, groundOffset, layerMask))
+        //{
+        //    groundNormal = groundPoint.normal;
+         
+        //    sparkParticles.SetActive(true);
+        //}
+        //else if (Physics.Raycast(playerForwardRay, out groundPoint, forwardOffset, layerMask))
+        //{
+        //    groundNormal = groundPoint.normal;
+        //    //playerNormal = groundNormal;
+        //    sparkParticles.SetActive(true);
+        //}
+        //else
+        //{
+        //    groundNormal = Vector3.up;
+        //    sparkParticles.SetActive(false);
+        //}
+
+
+        playerNormal = groundNormal;
         Debug.DrawRay(transform.position, playerNormal);
         rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
         
         playerForward = Vector3.Cross(transform.right, groundNormal);
         gravRotation = Quaternion.LookRotation(playerForward, playerNormal);
-        transform.rotation = Quaternion.Lerp(transform.rotation, gravRotation, 10 * Time.deltaTime) * Quaternion.Euler(rotation * rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, gravRotation, rotationTime * Time.deltaTime) * Quaternion.Euler(rotation * rotationSpeed);
     }
-
 }

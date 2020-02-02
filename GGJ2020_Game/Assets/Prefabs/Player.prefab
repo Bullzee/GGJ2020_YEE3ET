@@ -4808,7 +4808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8703625584833177386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.116573095, z: 0}
+  m_LocalPosition: {x: 1, y: 0.116573095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8703625586211317790}
@@ -4941,9 +4941,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f46cb3182c7f5409cb64c0bd9a6dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
-  jumpForce: 0
-  jumpOffset: 0
+  movementSpeed: 5
+  jumpForce: 1
+  jumpOffset: 1.5
 --- !u!54 &8703625585267152687
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4975,7 +4975,10 @@ MonoBehaviour:
   RobotMask: Robot
   worldGravity: 9.8
   rotationSpeed: 1
+  forwardOffset: 2
   groundOffset: 2
+  rotationTime: 7
+  height: 0.5
   layerMask: -257
   player: {fileID: 8703625585267152686}
   sparkParticles: {fileID: 2114654876}
@@ -5076,7 +5079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b665a7defd78d4a80c15f2e1b9677a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throughPoint: {fileID: 7030464243128694268}
   repairPrompt: {fileID: 0}
   damageBar: {fileID: 0}
   healthBar: {fileID: 0}

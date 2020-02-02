@@ -1,8 +1,38 @@
 fileFormatVersion: 2
-guid: 8d59749481315924f9ffa8d965b8b4bc
+guid: 38a7ebc41986bdb43a4fe9de735cd11a
 ModelImporter:
   serializedVersion: 26
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -2669425667356768085
+    second: armSwingIdle
+  - first:
+      74: -7490103751995960851
+    second: IdleArmFlap
+  - first:
+      74: 885944232402757753
+    second: Armature|Action
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: -1978303741906493279
+    second: Armature|idle
+  - first:
+      74: -5356809422978904659
+    second: Armature|IdleArmFlap
+  - first:
+      74: -5754981933697684107
+    second: Armature|IdleArmFlap.001
+  - first:
+      74: 134210120970136765
+    second: Armature|IdleArmFlap.002
+  - first:
+      74: -636702456768196720
+    second: Armature|IdleArmSwing
+  - first:
+      74: -8027633737290555915
+    second: Armature|PunchLeft
   externalObjects: {}
   materials:
     importMaterials: 1
