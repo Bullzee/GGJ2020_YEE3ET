@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource bgMusic, jumpSound, magnetSound;
+    public AudioSource bgMusic, jumpSound, magnetSound, repairSound;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +16,27 @@ public class SoundManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayJump()
+    {
+        jumpSound.Play();
+    }
+
+    public void PlayMagnet()
+    {
+        if (!magnetSound.isPlaying)
+        magnetSound.Play();
+    }
+
+    public void StopMagnet()
+    {
+        magnetSound.Stop();
+    }
+
+    public void PlayRepair()
+    {
+        if (!repairSound.isPlaying)
+        repairSound.Play();
     }
 }

@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     MagnetBoots magnet;
 
+    //for the sounds
+    public SoundManager theSoundManager; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.up, out groundRaycast, jumpOffset) && jump > 0)
         {
             playerRigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+            theSoundManager.PlayJump(); 
         }
     }
 
