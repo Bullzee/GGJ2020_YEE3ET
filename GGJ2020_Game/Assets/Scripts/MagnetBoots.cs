@@ -25,6 +25,9 @@ public class MagnetBoots : MonoBehaviour
 
     public GameObject sparkParticles;
 
+    //for sounds
+    public SoundManager theSoundManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,12 +60,14 @@ public class MagnetBoots : MonoBehaviour
                 if (Physics.Raycast(playerRay, out groundPoint, groundOffset, layerMask))
                 {
                     groundNormal = groundPoint.normal;
+                    theSoundManager.PlayMagnet();
                     //playerNormal = groundNormal;
                     sparkParticles.SetActive(true);
                 }
                 else
                 {
                     groundNormal = Vector3.up;
+                    theSoundManager.StopMagnet(); 
                     sparkParticles.SetActive(false);
                 }
                 break;   
