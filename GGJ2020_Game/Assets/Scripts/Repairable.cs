@@ -10,6 +10,9 @@ public class Repairable : MonoBehaviour
 
     private float currentDamage;
 
+    //vfx
+    public ParticleSystem smokeParticles, cloudParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +27,17 @@ public class Repairable : MonoBehaviour
 
     public void repairDamage(float amount)
     {
+        if (smokeParticles.isPlaying) smokeParticles.Stop();
+
         if (currentDamage > 0)
         {
             currentDamage -= amount;
+            if (!cloudParticles.isPlaying) cloudParticles.Play();
 
             if (currentDamage <= 0)
             {
                 currentDamage = 0;
-
+                cloudParticles.Stop();
                 GameController.instance.repairFinished();
             }
         }

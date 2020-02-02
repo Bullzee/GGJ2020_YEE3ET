@@ -12,6 +12,9 @@ public class Interaction : MonoBehaviour
     private Dictionary<Outline, bool> outlinesDict = new Dictionary<Outline, bool>();
     private List<Outline> outlines = new List<Outline>();
 
+    //to play the sounds
+    public SoundManager theSoundManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +56,7 @@ public class Interaction : MonoBehaviour
                     if (Input.GetKey(KeyCode.E))
                     {
                         r.repairDamage(Time.deltaTime);
-
+                        theSoundManager.PlayRepair();
                         healthBar.localScale = new Vector3(1f - (r.getCurrentDamage() / r.getInitialDamage()), healthBar.localScale.y, healthBar.localScale.z);
                     }
                 }
