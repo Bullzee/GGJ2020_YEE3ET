@@ -19,6 +19,9 @@ public class BigBossyBoi : MonoBehaviour
     public Transform lockOnTarget;
     public float spinSpeed = 720.0f;
     public int stuckOnAttackX = 3;
+    public RocketLauncher launcher;
+    public float rocketCD = 7.0f;
+    float _rocketTimer = 0;
     int attackCounter = 0;
     bool _playerOn = false;
     bool _hitPlayer = false;
@@ -65,6 +68,15 @@ public class BigBossyBoi : MonoBehaviour
         {
             exitState();
             state = BossState.Shaking;
+        }
+
+        if(state != BossState.Stuck)
+        {
+            _rocketTimer += Time.deltaTime;
+            if (_rocketTimer>=rocketCD) {
+                _rocketTimer = 0;
+                launcher.Fire(lockOnTarget);
+            }
         }
         _playerOn = false;
     }

@@ -8,26 +8,30 @@ public class Rocket : MonoBehaviour
     bool _launched = false;
     MissileState state;
     float _speed = 25.0f;
-    float _stageOneTimer = 2.0f;
+    float _stageOneTimer = 0.75f;
     float _timer = 0.0f;
     private float rotationSpeed = 1000;
-    private float focusDistance = 5;
+    private float focusDistance = 10;
     private bool isLookingAtObject = true;
      float stageTwoDistance = 5.0f;
     public void Launch(Transform target)
     {
         _targetPos = target;
         _launched = true;
+        transform.forward = transform.up;
     }
     // Start is called before the first frame update
     void Start()
     {
         state = MissileState.StageOne;
+        Destroy(gameObject,15);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(transform.position,transform.forward * 5,Color.red );
+        Debug.DrawRay(transform.position, transform.up * 5, Color.blue);
         if (_launched)
         {
             //  y = mx+b
@@ -50,9 +54,9 @@ public class Rocket : MonoBehaviour
 
     void StageOneLogic()
     {
-        Vector3 newDirection = Vector3.RotateTowards(transform.up, new Vector3(transform.forward.x, 0,transform.forward.z ), Mathf.Deg2Rad * 45.0f * Time.deltaTime, 0.0f);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward,_targetPos.position, Mathf.Deg2Rad * 30.0f * Time.deltaTime, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
-        transform.position += transform.up * _speed * Time.deltaTime;
+        transform.position += transform.forward * (_speed*0.5f) * Time.deltaTime;
         _timer += Time.deltaTime;
         if (_timer >= _stageOneTimer)
         {
@@ -74,7 +78,9 @@ public class Rocket : MonoBehaviour
 
      
             transform.rotation = Quaternion.LookRotation(newDirection);
-        
+        Debug.DrawRay(transform.position, targetDirection * 5, Color.black);
+        Debug.DrawRay(transform.position, newDirection * 5, Color.cyan);
+
     }
 
     
@@ -95,13 +101,15 @@ public class Rocket : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
+
+        Debug.DrawRay(transform.position, targetDirection * 5, Color.black);
+        Debug.DrawRay(transform.position, newDirection * 5, Color.cyan);
+
     }
     void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "Player")
-        {
-          //  col.gameObject.GetComponent<PlayerKnockback>().KnockPlayer();
-        }
+    
+
         Destroy(gameObject);
     }
 
