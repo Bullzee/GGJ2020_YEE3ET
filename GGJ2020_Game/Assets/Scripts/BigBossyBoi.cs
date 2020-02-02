@@ -27,11 +27,13 @@ public class BigBossyBoi : MonoBehaviour
     float _timer = 0.0f;
     
     BossState state;
+    BigBossyBoi_AnimationController animationController;
 
     // Start is called before the first frame update
     void Start()
     {
         state = BossState.CoolingDown;
+        animationController = GetComponent<BigBossyBoi_AnimationController>();
     }
 
     // Update is called once per frame
@@ -101,7 +103,7 @@ public class BigBossyBoi : MonoBehaviour
         Debug.Log("Targeting");
         if (LockOnPlayer())
         {
-            state = BossState.Attacking;
+            state = BossState.LockedOn;
         }
     }
     bool LockOnPlayer()
@@ -152,6 +154,7 @@ public class BigBossyBoi : MonoBehaviour
         /*
          Start animation
          */
+        animationController.setToAttack();
         _hitPlayer = false;
         _finishedAttack = false;
         state = BossState.Attacking;
@@ -163,8 +166,7 @@ public class BigBossyBoi : MonoBehaviour
         {
             
             attackCounter++;
-           
-               
+
                
             if(attackCounter>=stuckOnAttackX&&!_hitPlayer)
             {
@@ -242,6 +244,7 @@ public class BigBossyBoi : MonoBehaviour
     void PlayUprightAnimation()
     {
         //play animation to stand up
+        animationController.setToIdle();
     }
 }
 /*public class BossStateMachine:ScriptableObject
