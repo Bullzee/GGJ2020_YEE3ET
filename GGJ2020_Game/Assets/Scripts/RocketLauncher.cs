@@ -8,8 +8,9 @@ public class RocketLauncher : MonoBehaviour
     public Transform RocketTransform;
     public void Fire()
     {
-      GameObject temp = Instantiate(RocketPrefab, RocketTransform.position,RocketTransform.rotation);
+      GameObject temp = Instantiate(RocketPrefab, transform.position,transform.rotation);
         Rocket rocket = temp.GetComponent<Rocket>();
+        rocket.Launch(RocketTransform);
     }
     // Start is called before the first frame update
     void Start()
