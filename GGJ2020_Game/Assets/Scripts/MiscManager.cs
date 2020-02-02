@@ -21,10 +21,13 @@ public class MiscManager : MonoBehaviour
 
     bool gameOver = false;
 
+    public GameObject tutorial;
+    float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = 0;
     }
 
     // Update is called once per frame
@@ -32,6 +35,11 @@ public class MiscManager : MonoBehaviour
     {
         UpdateTimer(0.001f * Time.deltaTime);
         MoveCity();
+
+        timer += Time.deltaTime;
+
+        if (timer > 10)
+            tutorial.SetActive(false);
     }
 
     public void UpdateTimer(float amount)

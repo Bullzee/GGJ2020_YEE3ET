@@ -13,6 +13,8 @@ public class CamControls : MonoBehaviour
         rotationSpeed = 1f;
         minAngle = -40f;
         maxAngle = 80f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
