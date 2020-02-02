@@ -33,7 +33,7 @@ public class MiscManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer(0.001f * Time.deltaTime);
+        UpdateTimer(0.005f * Time.deltaTime);
         MoveCity();
 
         timer += Time.deltaTime;
