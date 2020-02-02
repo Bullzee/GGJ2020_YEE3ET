@@ -2334,6 +2334,11 @@ PrefabInstance:
       propertyPath: lockOnTarget
       value: 
       objectReference: {fileID: 549167816}
+    - target: {fileID: 6441435679287714065, guid: 7eda6b85826401f4a85b415300fe2219,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 735d8d6dbf307aa47be00c120355a6ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eda6b85826401f4a85b415300fe2219, type: 3}
 --- !u!1001 &2134170213168322042
