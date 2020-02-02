@@ -4976,8 +4976,8 @@ MonoBehaviour:
   worldGravity: 9.8
   rotationSpeed: 1
   forwardOffset: 2
-  groundOffset: 2
-  rotationTime: 7
+  groundOffset: 3
+  rotationTime: 3
   height: 0.5
   layerMask: -257
   player: {fileID: 8703625585267152686}
