@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 5038920558343517934}
   - component: {fileID: 123397935}
   - component: {fileID: 956370513828366252}
+  - component: {fileID: 7344059225231109607}
   m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
@@ -575,6 +576,20 @@ CapsuleCollider:
   m_Direction: 0
   m_Center: {x: -0.00091875315, y: 0.00057516416, z: 0.01098835}
 --- !u!136 &956370513828366252
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096155748369223465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0032024789
+  m_Height: 0.00726521
+  m_Direction: 0
+  m_Center: {x: -0.00091875315, y: 0.00057516416, z: 0.01098835}
+--- !u!136 &7344059225231109607
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
