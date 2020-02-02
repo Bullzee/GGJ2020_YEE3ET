@@ -2826,6 +2826,11 @@ PrefabInstance:
       propertyPath: damageParticles
       value: 
       objectReference: {fileID: 1365498255}
+    - target: {fileID: 8703625585267152687, guid: 2d773f2eb58b58c45ac26fd6b42f37b1,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d773f2eb58b58c45ac26fd6b42f37b1, type: 3}
 --- !u!1 &1875670709 stripped
@@ -3511,6 +3516,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
+        type: 3}
+      propertyPath: city
+      value: 
+      objectReference: {fileID: 1990304837}
+    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
+        type: 3}
+      propertyPath: cityPosition.y
+      value: 272
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
+        type: 3}
+      propertyPath: cityPosition.z
+      value: -60.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
+        type: 3}
+      propertyPath: cityPosition.x
+      value: 210
+      objectReference: {fileID: 0}
     - target: {fileID: 8830344313572639328, guid: 721fdef24f93f314aa630db04ecb1142,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3650,26 +3675,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
-        type: 3}
-      propertyPath: city
-      value: 
-      objectReference: {fileID: 1990304837}
-    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
-        type: 3}
-      propertyPath: cityPosition.y
-      value: 272
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
-        type: 3}
-      propertyPath: cityPosition.z
-      value: -60.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8830344313572639332, guid: 721fdef24f93f314aa630db04ecb1142,
-        type: 3}
-      propertyPath: cityPosition.x
-      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 8830344313907521352, guid: 721fdef24f93f314aa630db04ecb1142,
         type: 3}
