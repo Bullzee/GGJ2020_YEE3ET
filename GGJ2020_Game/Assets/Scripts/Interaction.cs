@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
-    public GameObject repairPrompt;
+    public GameObject repairPrompt, checkmark;
     public GameObject damageBar;
     public Transform healthBar;
 
@@ -60,7 +60,12 @@ public class Interaction : MonoBehaviour
                         healthBar.localScale = new Vector3(1f - (r.getCurrentDamage() / r.getInitialDamage()), healthBar.localScale.y, healthBar.localScale.z);
                     }
                 }
+                else
+                {
+                    checkmark.SetActive(true);
+                }
             }
+            else checkmark.SetActive(false);
         }
 
         foreach (Outline o in outlines)
