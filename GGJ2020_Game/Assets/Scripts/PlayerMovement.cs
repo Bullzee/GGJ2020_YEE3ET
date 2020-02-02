@@ -13,13 +13,19 @@ public class PlayerMovement : MonoBehaviour
     MagnetBoots magnet;
 
     //for the sounds
-    public SoundManager theSoundManager; 
+    public SoundManager theSoundManager;
+
+    Player_AnimationManager animator;
+
+    public bool repairing = false;
+    bool jumping = false;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         magnet = GetComponent<MagnetBoots>();
+        animator = GetComponent<Player_AnimationManager>();
     }
 
     void Update()
@@ -37,11 +43,29 @@ public class PlayerMovement : MonoBehaviour
     public void playerJump()
     {
         float jump = Input.GetAxis("Jump");
-        if (Physics.Raycast(transform.position, -transform.up, out groundRaycast, jumpOffset) && jump > 0)
+        if (Physics.Raycast(transform.position, -transform.up, out groundRaycast, jumpOffset))
         {
-            playerRigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
-            theSoundManager.PlayJump(); 
+            if (jump > 0)
+            {
+                playerRigidbody.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+                theSoundManager.PlayJump();
+            }
+
+            if (!repairing)
+            {
+                if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+                    animator.setToMove();
+                else
+                {
+                    animator.setToIdle();
+                }
+            }
+            else
+                animator.setToRepair();
+
         }
+        else
+            animator.setToJump();
     }
 
     private void OnTriggerEnter(Collider other)

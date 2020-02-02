@@ -13,10 +13,13 @@ public class Repairable : MonoBehaviour
     //vfx
     public ParticleSystem smokeParticles, cloudParticles;
 
+    PlayerMovement player;
+
     // Start is called before the first frame update
     void Start()
     {
         currentDamage = damage;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -31,16 +34,20 @@ public class Repairable : MonoBehaviour
 
         if (currentDamage > 0)
         {
+            player.repairing = true;
             currentDamage -= amount;
             if (!cloudParticles.isPlaying) cloudParticles.Play();
 
             if (currentDamage <= 0)
             {
+                player.repairing = false;
                 currentDamage = 0;
                 cloudParticles.Stop();
                 GameController.instance.repairFinished();
             }
         }
+
+
     }
 
     public float getInitialDamage()
