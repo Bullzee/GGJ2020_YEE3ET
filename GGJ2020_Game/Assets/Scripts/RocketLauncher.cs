@@ -5,12 +5,12 @@ using UnityEngine;
 public class RocketLauncher : MonoBehaviour
 {
    public GameObject RocketPrefab;
-    public Transform RocketTransform;
-    public void Fire()
+ //   public Transform RocketTransform;
+    public void Fire(Transform player)
     {
       GameObject temp = Instantiate(RocketPrefab, transform.position,transform.rotation);
-        Rocket rocket = temp.GetComponent<Rocket>();
-        rocket.Launch(RocketTransform);
+        Rocket rocket = temp.GetComponentInChildren<Rocket>();
+        rocket.Launch(player);
     }
     // Start is called before the first frame update
     void Start()

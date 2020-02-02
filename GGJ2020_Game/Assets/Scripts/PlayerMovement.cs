@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool repairing = false;
     bool jumping = false;
+    //for the particles
+    public ParticleSystem damageParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -72,12 +74,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.CompareTag("KnockBack"))
         {
+            print("HELLO??");
             KnockBack();
         }
     }
 
-    void KnockBack()
+    public void KnockBack()
     {
+        damageParticles.Play();
         playerRigidbody.AddForce(-transform.forward * jumpForce, ForceMode.VelocityChange);
 
     }

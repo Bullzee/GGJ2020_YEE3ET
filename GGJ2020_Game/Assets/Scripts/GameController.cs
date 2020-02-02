@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+    public MiscManager theMiscManager;
+    public BigBossyBoi boss;
 
     private int repairsFinished = 0;
+    int NUM_REPAIRS = 5;
+    bool gameOver = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +35,17 @@ public class GameController : MonoBehaviour
     public void repairFinished()
     {
         repairsFinished++;
-
+        theMiscManager.UpdateHealth(0.2f);
+        boss.FreeBossyBoi();
         //TODO: 
-        //if (repairsFinished >= NUM_REPAIRS)
-            // end the game in success
+        if (repairsFinished >= NUM_REPAIRS)
+        {
+            if (gameOver == false)
+            {
+                SceneManager.LoadScene("Win", LoadSceneMode.Additive);
+                gameOver = true; 
+            }
+
+        }
     }
 }

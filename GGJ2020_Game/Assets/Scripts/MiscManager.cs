@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MiscManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MiscManager : MonoBehaviour
     public Vector3 cityPosition;
     int cityLimit = 490;
 
+    bool gameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +30,7 @@ public class MiscManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTimer(0.1f * Time.deltaTime);
-        UpdateHealth(0.1f * Time.deltaTime);
+        UpdateTimer(0.001f * Time.deltaTime);
         MoveCity();
     }
 
@@ -37,6 +39,12 @@ public class MiscManager : MonoBehaviour
         timerSlider.value += amount;
         boss.color = new Color(1, 1, 1, timerSlider.value);
         village.color = new Color(1, 1, 1, timerSlider.value);
+
+        if (timerSlider.value == 1 && !gameOver)
+        {
+            SceneManager.LoadScene("Lose", LoadSceneMode.Additive);
+            gameOver = true; 
+        }
     }
 
     public void UpdateHealth(float amount)
@@ -49,7 +57,7 @@ public class MiscManager : MonoBehaviour
     {
         if (cityPosition.x < cityLimit)
         {
-            cityPosition.x += (10*Time.deltaTime);
+            cityPosition.x += (4*Time.deltaTime);
             city.transform.position = new Vector3(cityPosition.x, cityPosition.y, cityPosition.z);
         }
     }

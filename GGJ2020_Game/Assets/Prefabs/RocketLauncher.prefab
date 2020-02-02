@@ -43,6 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e540a7414011147a9f7c05030d6b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RocketPrefab: {fileID: 1524833592080064942, guid: 5e327595b1e5ac64198b2b66b1f8df19,
+  RocketPrefab: {fileID: 2933985957338049758, guid: 675e3ad649b15554aadceb810fa3df76,
     type: 3}
-  RocketTransform: {fileID: 0}

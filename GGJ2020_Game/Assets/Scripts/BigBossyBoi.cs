@@ -19,6 +19,9 @@ public class BigBossyBoi : MonoBehaviour
     public Transform lockOnTarget;
     public float spinSpeed = 720.0f;
     public int stuckOnAttackX = 3;
+    public RocketLauncher launcher;
+    public float rocketCD = 7.0f;
+    float _rocketTimer = 0;
     int attackCounter = 0;
     bool _playerOn = false;
     bool _hitPlayer = false;
@@ -65,6 +68,15 @@ public class BigBossyBoi : MonoBehaviour
         {
             exitState();
             state = BossState.Shaking;
+        }
+
+        if(state != BossState.Stuck)
+        {
+            _rocketTimer += Time.deltaTime;
+            if (_rocketTimer>=rocketCD) {
+                _rocketTimer = 0;
+                launcher.Fire(lockOnTarget);
+            }
         }
         _playerOn = false;
     }
@@ -114,7 +126,7 @@ public class BigBossyBoi : MonoBehaviour
         
         float angleBetween = Vector3.Angle(transform.forward, robotToPlayer);
         Vector3 newDirection;
-        Debug.Log(angleBetween);
+        //Debug.Log(angleBetween);
         if (angleBetween < angleThreshold)
         {
             return true;
@@ -219,6 +231,8 @@ public class BigBossyBoi : MonoBehaviour
           
             state = BossState.CoolingDown; 
         }
+        transform.Rotate(new Vector3(0 ,720.0f*Time.deltaTime ,0));
+
     }
 
     void CoolDownLogic()
@@ -249,6 +263,23 @@ public class BigBossyBoi : MonoBehaviour
         //play animation to stand up
         animationController.setToIdle();
     }
+    public void FreeBossyBoi()
+    {
+        if (state == BossState.Stuck)
+        {
+            PlayUprightAnimation();
+            state = BossState.CoolingDown;
+            _timer = 0;
+        }
+
+    }
+    /*void OnCollisionEnter(Collision col)
+    {
+      if (col.gameObject.tag == "Player")
+        {
+            _playerOn = true;
+        }
+    }*/
 }
 /*public class BossStateMachine:ScriptableObject
 {
